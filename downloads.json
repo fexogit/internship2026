@@ -1,0 +1,40 @@
+{
+  "downloads": [
+    {
+      "title": "digital System Design Manual",
+      "description": "Introduction to Digital System Design.",
+      "link": "files/manuals/Digital_System_Design.pdf",
+      "label": "Download PDF"
+    },
+    {
+      "title": "RTL Design Notes",
+      "description": "RTL coding guidelines and practical examples.",
+      "link": "files/notes/RTL_Design_Notes.pdf",
+      "label": "Download PDF"
+    },
+    {
+      "title": "Hardware Logic Design",
+      "description": "Combinational and sequential logic design reference.",
+      "link": "files/manuals/Hardware_Logic_Design.pdf",
+      "label": "Download PDF"
+    },
+    {
+      "title": "Verilog Cheat Sheet",
+      "description": "Quick syntax reference for Verilog and SystemVerilog.",
+      "link": "files/notes/Verilog_CheatSheet.pdf",
+      "label": "Download PDF"
+    },
+    {
+      "title": "FSM Examples",
+      "description": "Finite state machine examples and templates.",
+      "link": "files/projects/FSM_Examples.zip",
+      "label": "Download ZIP"
+    },
+    {
+      "title": "Vivado Project Files",
+      "description": "Sample FPGA project files and projects.",
+      "link": "files/projects/Vivado_Projects.zip",
+      "label": "Download ZIP"
+    }
+  ]
+}

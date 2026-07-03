@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning Resources | FEXO </title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <span>FEXO</span>
+
+        </div>
+
+        <ul>
+
+            <li><a href="index.html">Home</a></li>
+            <li><a href="resources.html" class="active">Learning Resources</a></li>
+            <li><a href="downloads.html">Downloads</a></li>
+            <li><a href="updates.html">Updates</a></li>
+            <li><a href="contact.html">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Learning Resources</h1>
+
+    <p>
+
+        Study materials and references for your Digital Systems and RTL Design Internship.
+
+    </p>
+
+</section>
+
+
+<section>
+
+    <p class="resource-note">Click the heading of any resource to open or download it directly.</p>
+    <div id="resources-container" class="cards"></div>
+
+    <script>
+        fetch('resources.json')
+          .then(response => response.json())
+          .then(data => {
+            const container = document.getElementById('resources-container');
+            if (!data.resources || !Array.isArray(data.resources)) {
+              container.innerHTML = '<p>Resources file is missing or malformed.</p>';
+              return;
+            }
+
+            data.resources.forEach(resource => {
+              const card = document.createElement('div');
+              card.className = 'card';
+
+              const title = document.createElement('h3');
+              const link = document.createElement('a');
+              link.href = resource.link;
+              link.target = '_blank';
+              link.rel = 'noopener';
+              link.textContent = resource.title;
+              title.appendChild(link);
+              card.appendChild(title);
+
+              if (resource.description) {
+                const description = document.createElement('p');
+                description.innerHTML = resource.description.replace(/\n/g, '<br>');
+                card.appendChild(description);
+              }
+
+              container.appendChild(card);
+            });
+          })
+          .catch(() => {
+            const container = document.getElementById('resources-container');
+            container.innerHTML = '<p>Could not load resources. Please check resources.json.</p>';
+          });
+    </script>
+
+</section>
+
+
+<footer>
+
+    <p>
+
+        © 2026 FEXO
+
+    </p>
+
+    <p>
+
+        Digital Systems Design | RTL Design | Hardware Logic Design
+
+    </p>
+
+</footer>
+
+</body>
+
+</html>

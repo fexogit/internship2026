@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updates | FEXO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="FEXO Logo">
+                <span>FEXO</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resources.html">Learning Resources</a></li>
+                <li><a href="downloads.html">Downloads</a></li>
+                <li><a href="updates.html" class="active">Updates</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Updates</h1>
+        <p>Latest announcements and internship progress.</p>
+    </section>
+
+    <section>
+        <h2>Recent Updates</h2>
+        <div id="updates-container"></div>
+        <script>
+            fetch('updates.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('updates-container');
+                    if (!data.updates || !Array.isArray(data.updates)) {
+                        container.innerHTML = '<p>Updates file is missing or malformed.</p>';
+                        return;
+                    }
+
+                    data.updates.forEach(update => {
+                        const updateBox = document.createElement('div');
+                        updateBox.className = 'update-box';
+                        updateBox.innerHTML = `
+                            <h3>${update.date}</h3>
+                            <p>${update.description} ${update.title}</p>
+                        `;
+                        container.appendChild(updateBox);
+                    });
+                })
+                .catch(() => {
+                    document.getElementById('updates-container').innerHTML = '<p>Could not load updates. Check updates.json.</p>';
+                });
+        </script>
+    </section>
+
+    <footer>
+        <p>© 2026 FEXO</p>
+        <p>Digital Systems Design | RTL Design | Hardware Logic Design</p>
+    </footer>
+</body>
+</html>

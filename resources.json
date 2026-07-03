@@ -1,0 +1,34 @@
+{
+  "resources": [
+    {
+      "title": "Digital System Design Manual",
+      "description": "Number systems, Boolean algebra, Karnaugh maps, combinational and sequential circuits.",
+      "link": "files/manuals/Digital_System_Design.pdf"
+    },
+    {
+      "title": "RTL Design Notes",
+      "description": "RTL concepts, coding style, always blocks, non-blocking assignments, and FSM design.",
+      "link": "files/block_diagram.drawio"
+    },
+    {
+      "title": "Hardware Logic Design Manual",
+      "description": "Multiplexers, decoders, encoders, registers, counters, and ALU design.",
+      "link": "files/manuals/Hardware_Logic_Design.pdf"
+    },
+    {
+      "title": "Verilog Cheat Sheet",
+      "description": "Syntax reference, modules, testbenches, simulation, and coding examples.",
+      "link": "files/notes/Verilog_CheatSheet.pdf"
+    },
+    {
+      "title": "FSM Examples Pack",
+      "description": "Finite state machine examples and templates for digital design projects.",
+      "link": "files/projects/FSM_Examples.zip"
+    },
+    {
+      "title": "Vivado Project Files",
+      "description": "Sample FPGA project files, constraints, and implementation examples.",
+      "link": "files/projects/Vivado_Projects.zip"
+    }
+  ]
+}

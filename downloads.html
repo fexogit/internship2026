@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads | FEXO</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="FEXO Logo">
+                <span>FEXO</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="resources.html">Learning Resources</a></li>
+                <li><a href="downloads.html" class="active">Downloads</a></li>
+                <li><a href="updates.html">Updates</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Downloads</h1>
+        <p>Manuals, notes, PDFs, and reference files for the internship program.</p>
+    </section>
+
+    <section>
+        <h2>Available Files</h2>
+        <div id="downloads-container" class="cards"></div>
+        <script>
+            fetch('downloads.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('downloads-container');
+                    if (!data.downloads || !Array.isArray(data.downloads)) {
+                        container.innerHTML = '<p>Downloads file is missing or malformed.</p>';
+                        return;
+                    }
+
+                    data.downloads.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+
+                        const title = document.createElement('h3');
+                        title.textContent = item.title;
+                        card.appendChild(title);
+
+                        if (item.description) {
+                            const description = document.createElement('p');
+                            description.innerHTML = item.description.replace(/\n/g, '<br>');
+                            card.appendChild(description);
+                        }
+
+                        const link = document.createElement('a');
+                        link.href = item.link;
+                        link.download = '';
+
+                        const button = document.createElement('button');
+                        button.className = 'download-btn';
+                        button.textContent = item.label || 'Download';
+
+                        link.appendChild(button);
+                        card.appendChild(link);
+                        container.appendChild(card);
+                    });
+                })
+                .catch(() => {
+                    document.getElementById('downloads-container').innerHTML = '<p>Could not load downloads. Check downloads.json.</p>';
+                });
+        </script>
+    </section>
+
+    <footer>
+        <p>© 2026 FEXO</p>
+        <p>Digital Systems Design | RTL Design | Hardware Logic Design</p>
+    </footer>
+</body>
+</html>
